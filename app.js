@@ -1,3 +1,4 @@
+var csv_parser = require('csv-parse/lib/sync')
 var express = require('express');
 var app = express();
 
@@ -15,9 +16,42 @@ async function getData() {
     return feed.entity
 }
 
+async function getStops() {
+    var complexesRequestSettigns = {
+        method: 'GET',
+        url: 'http://web.mta.info/developers/data/nyct/subway/StationComplexes.csv',
+        encoding: null
+    }
+    var complexesResponse = await request(complexesRequestSettigns);
+    var complexesData = csv_parser(complexesResponse.toString(), {
+        columns: true,
+        skip_empty_lines: true
+      });
+
+    var stopsRequestSettigns = {
+        method: 'GET',
+        url: 'http://web.mta.info/developers/data/nyct/subway/Stations.csv',
+        encoding: null
+    }
+    var stopsResponse = await request(stopsRequestSettigns);
+    var stopsData = csv_parser(stopsResponse.toString(), {
+        columns: true,
+        skip_empty_lines: true
+      });
+    return {
+        complexes: complexesData,
+        stops: stopsData
+    }
+}
+
 app.get("/", (req, res, next) => {
     getData()
         .then((data) => res.json(data))
+});
+
+app.get("/stops", (req, res, next) => {
+    getStops()
+        .then((data) => res.send(data))
 });
 
 app.listen(3000, () => {

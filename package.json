@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csv-parse": "^4.8.8",
     "express": "^4.17.1",
     "gtfs-realtime-bindings": "0.0.5",
     "request": "^2.88.0",
