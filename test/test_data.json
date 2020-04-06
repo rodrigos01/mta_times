@@ -1,0 +1,59 @@
+{
+    "complexes": [
+        {
+            "Complex ID": "601",
+            "Complex Name": "14 St / 6 Av"
+        },
+        {
+            "Complex ID": "602",
+            "Complex Name": "14 St - Union Sq"
+        }
+    ],
+    "stops": [
+        {
+            "Station ID": "1",
+            "Complex ID": "1",
+            "GTFS Stop ID": "R01",
+            "Division": "BMT",
+            "Line": "Astoria",
+            "Stop Name": "Astoria - Ditmars Blvd",
+            "Borough": "Q",
+            "Daytime Routes": "N W",
+            "Structure": "Elevated",
+            "GTFS Latitude": "40.775036",
+            "GTFS Longitude": "-73.912034",
+            "North Direction Label": "",
+            "South Direction Label": "Manhattan"
+        },
+        {
+            "Station ID": "116",
+            "Complex ID": "601",
+            "GTFS Stop ID": "L02",
+            "Division": "BMT",
+            "Line": "Canarsie",
+            "Stop Name": "6 Av",
+            "Borough": "M",
+            "Daytime Routes": "L",
+            "Structure": "Subway",
+            "GTFS Latitude": "40.737335",
+            "GTFS Longitude": "-73.996786",
+            "North Direction Label": "8 Av",
+            "South Direction Label": "Brooklyn"
+        },
+        {
+            "Station ID": "117",
+            "Complex ID": "602",
+            "GTFS Stop ID": "L03",
+            "Division": "BMT",
+            "Line": "Canarsie",
+            "Stop Name": "Union Sq - 14 St",
+            "Borough": "M",
+            "Daytime Routes": "L",
+            "Structure": "Subway",
+            "GTFS Latitude": "40.734789",
+            "GTFS Longitude": "-73.99073",
+            "North Direction Label": "8 Av",
+            "South Direction Label": "Brooklyn"
+        }
+    ]
+}

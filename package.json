@@ -4,7 +4,15 @@
   "description": "api to get mta realtime data",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d dist",
+    "start": "npm run build && node dist/server.js",
+    "debug": "npm run build && node --nolazy --inspect dist/server.js",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +22,14 @@
     "gtfs-realtime-bindings": "0.0.5",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "babel-jest": "^25.2.6",
+    "jest": "^25.2.7",
+    "rimraf": "^3.0.2"
   }
 }
