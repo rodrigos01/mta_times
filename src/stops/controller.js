@@ -1,4 +1,5 @@
 import MtaConnector from '../mta_data/MtaConnector'
+import * as geolib from 'geolib'
 
 class StopsController {
 
@@ -7,7 +8,6 @@ class StopsController {
     }
 
     async getStops() {
-        let complexesData = await this.connector.getComplexes()
         let stopsData = await this.connector.getStops()
 
         return stopsData.map(stop => {
@@ -21,6 +21,14 @@ class StopsController {
                 },
                 lines: stop["Daytime Routes"].split(" ")
             }
+        })
+    }
+
+    async stopsNear(latitude, longitude) {
+        let stops = await this.getStops()
+        return stops.filter(stop => {
+            let withinRadius = geolib.isPointWithinRadius(stop.gtfs_geolocation, { latitude: latitude, longitude: longitude }, 300)
+            return withinRadius
         })
     }
 }
