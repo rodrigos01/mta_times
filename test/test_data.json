@@ -54,6 +54,21 @@
             "GTFS Longitude": "-73.99073",
             "North Direction Label": "8 Av",
             "South Direction Label": "Brooklyn"
+        },
+        {
+            "Station ID": "15",
+            "Complex ID": "602",
+            "GTFS Stop ID": "R20",
+            "Division": "BMT",
+            "Line": "Broadway - Brighton",
+            "Stop Name": "14 St - Union Sq",
+            "Borough": "M",
+            "Daytime Routes": "N Q R W",
+            "Structure": "Subway",
+            "GTFS Latitude": "40.735736",
+            "GTFS Longitude": "-73.990568",
+            "North Direction Label": "Uptown & Queens",
+            "South Direction Label": "Downtown & Brooklyn"
         }
     ]
 }

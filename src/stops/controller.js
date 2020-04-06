@@ -9,13 +9,12 @@ class StopsController {
     async getStops() {
         let complexesData = await this.connector.getComplexes()
         let stopsData = await this.connector.getStops()
+
         return stopsData.map(stop => {
             return {
-                id: parseInt(stop["Complex ID"]),
+                id: parseInt(stop["Station ID"]),
                 name: stop["Stop Name"],
-                gtfs_stop_ids: [
-                    stop["GTFS Stop ID"]
-                ],
+                gtfs_stop_id: stop["GTFS Stop ID"],
                 gtfs_geolocation: {
                     latitude: parseFloat(stop["GTFS Latitude"]),
                     longitude: parseFloat(stop["GTFS Longitude"])
@@ -23,13 +22,6 @@ class StopsController {
                 lines: stop["Daytime Routes"].split(" ")
             }
         })
-
-        let generatedStop = {
-            "name": "complexName",
-            "gtfs_stop_ids": [
-                "R01", "R03"
-            ]
-        }
     }
 }
 
