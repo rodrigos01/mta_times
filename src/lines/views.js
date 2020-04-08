@@ -30,12 +30,15 @@ export async function getLinesNearby(req, res) {
     let stops = await stopsController.stopsNear(latitude, longitude)
     let feeds = new Set()
     let validStopIds = new Set()
-    let result = {}
+    let result = {
+        stops: stops,
+        times: {}
+    }
     stops.forEach(stop => {
         validStopIds.add(stop.gtfs_stop_id)
         stop.lines.forEach(line => {
             feeds.add(line_feeds[line])
-            result[line] = []
+            result.times[line] = []
         });
     })
     let requests = Array.from(feeds).map(requestLineData)
@@ -53,7 +56,7 @@ export async function getLinesNearby(req, res) {
             tripUpdate.stopTimeUpdate.forEach(stopTimeUpdate => {
                 let stopId = stopTimeUpdate.stopId.slice(0, -1)
                 let direction = stopTimeUpdate.stopId.slice(-1)
-                let entry = result[tripUpdate.line]
+                let entry = result.times[tripUpdate.line]
                 if (entry && validStopIds.has(stopId)) {
                     entry.push({
                         stopId: stopId,

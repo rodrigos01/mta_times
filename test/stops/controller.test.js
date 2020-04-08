@@ -25,6 +25,10 @@ test('should transform stop', async () => {
             latitude: 40.775036,
             longitude: -73.912034
         },
-        lines: ["N", "W"]
+        lines: ["N", "W"],
+        direction_labels: {
+            "N": "",
+            "S": "Manhattan"
+        }
     })
 })

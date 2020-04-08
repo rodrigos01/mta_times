@@ -19,7 +19,11 @@ class StopsController {
                     latitude: parseFloat(stop["GTFS Latitude"]),
                     longitude: parseFloat(stop["GTFS Longitude"])
                 },
-                lines: stop["Daytime Routes"].split(" ")
+                lines: stop["Daytime Routes"].split(" "),
+                direction_labels: {
+                    "S": stop["South Direction Label"],
+                    "N": stop["North Direction Label"]
+                }
             }
         })
     }
