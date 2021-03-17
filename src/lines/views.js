@@ -27,6 +27,7 @@ const line_feeds = {
     "Z": "jz",
     "L": "l",
     "7": "7",
+    "S": "si",
 }
 
 export async function getLines(req, res) {
@@ -49,8 +50,10 @@ export async function getLinesNearby(req, res) {
     stops.forEach(stop => {
         validStopIds.add(stop.gtfs_stop_id)
         stop.lines.forEach(line => {
-            feeds.add(line_feeds[line])
-            result.times[line] = []
+            if (line_feeds[line]) {
+                feeds.add(line_feeds[line])
+                result.times[line] = []
+            }
         });
     })
     let requests = Array.from(feeds).map(requestLineData)

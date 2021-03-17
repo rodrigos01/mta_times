@@ -31,7 +31,7 @@ class StopsController {
     async stopsNear(latitude, longitude) {
         let stops = await this.getStops()
         return stops.filter(stop => {
-            let withinRadius = geolib.isPointWithinRadius(stop.gtfs_geolocation, { latitude: latitude, longitude: longitude }, 1000)
+            let withinRadius = geolib.isPointWithinRadius(stop.gtfs_geolocation, { latitude: latitude, longitude: longitude }, 500)
             return withinRadius
         })
     }
