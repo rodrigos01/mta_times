@@ -19,8 +19,8 @@
   "dependencies": {
     "csv-parse": "^4.8.8",
     "express": "^4.17.1",
-    "geolib": "^3.2.1",
-    "gtfs-realtime-bindings": "0.0.5",
+    "geolib": "^3.3.1",
+    "gtfs-realtime-bindings": "^0.0.6",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },

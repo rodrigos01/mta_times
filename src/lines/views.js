@@ -5,16 +5,28 @@ import MtaConnector from '../mta_data/MtaConnector'
 import StopsController from '../stops/controller'
 
 const line_feeds = {
-    "1": "1",
-    "2": "1",
-    "3": "1",
-    "4": "1",
-    "5": "1",
-    "6": "1",
-    "N": "16",
-    "Q": "16",
-    "R": "16",
-    "W": "16",
+    "A": "ace",
+    "C": "ace",
+    "E": "ace",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "N": "nqrw",
+    "Q": "nqrw",
+    "R": "nqrw",
+    "W": "nqrw",
+    "B": "bdfm",
+    "D": "bdfm",
+    "F": "bdfm",
+    "M": "bdfm",
+    "G": "g",
+    "J": "jz",
+    "Z": "jz",
+    "L": "l",
+    "7": "7",
 }
 
 export async function getLines(req, res) {
@@ -71,9 +83,15 @@ export async function getLinesNearby(req, res) {
 }
 
 async function requestLineData(feed_id) {
+    if (feed_id !== "") {
+        feed_id = "-" + feed_id
+    }
     var requestSettings = {
         method: 'GET',
-        url: 'http://datamine.mta.info/mta_esi.php?key=d634f4431a43ad4a67c07eea9a3ce745&feed_id=' + feed_id,
+        url: 'https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs' + feed_id,
+        headers: {
+            "x-api-key": "ZeO8MqUTUs4W4E7XQ7sKE3i84niMLd753HZCjXhE"
+        },
         encoding: null
     };
     let response = await request(requestSettings);
