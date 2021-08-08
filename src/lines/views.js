@@ -14,6 +14,7 @@ const line_feeds = {
     "4": "",
     "5": "",
     "6": "",
+    "7": "",
     "N": "nqrw",
     "Q": "nqrw",
     "R": "nqrw",
@@ -26,7 +27,6 @@ const line_feeds = {
     "J": "jz",
     "Z": "jz",
     "L": "l",
-    "7": "7",
     "S": "si",
 }
 
@@ -98,6 +98,11 @@ async function requestLineData(feed_id) {
         encoding: null
     };
     let response = await request(requestSettings);
-    let feed = GtfsRealtimeBindings.transit_realtime.FeedMessage.decode(response);
-    return feed.entity
+    try {
+        let feed = GtfsRealtimeBindings.transit_realtime.FeedMessage.decode(response);
+        return feed.entity
+    } catch (e) {
+        console.error(e);
+        console.debug(requestSettings);
+    }
 }
